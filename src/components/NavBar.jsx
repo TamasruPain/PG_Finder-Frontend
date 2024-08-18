@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import searchimg from './images/Search.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAddressCard, faArrowRightFromBracket, } from '@fortawesome/free-solid-svg-icons'
+import { faAddressCard, faArrowRightFromBracket,faArrowRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { ToastContainer } from 'react-toastify';
 import { handleSuccess } from '../utils';
-import ButtonModel from '../components/ButtonModel.jsx'
+
 
 const NavBar = () => {
-
   const navigate = useNavigate();
 
   const [loggedInUser, setLoggedInUser] = useState('');
@@ -50,7 +49,7 @@ const NavBar = () => {
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             <div>
-              <img src={searchimg} style={{ width: '25px', height: '25px' }} />
+              <img src={searchimg} style={{ width: '25px', height: '25px' }} alt="Search Icon" />
               PG Finder
             </div>
           </Link>
@@ -58,7 +57,6 @@ const NavBar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
-
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link className="nav-link" aria-current="page" to="/">Home</Link>
@@ -66,9 +64,12 @@ const NavBar = () => {
               <li className="nav-item">
                 <Link className="nav-link" to="/properties">Properties</Link>
               </li>
+
+
+
             </ul>
 
-            <ul className='navbar-nav ms-auto'>
+            <ul className="navbar-nav ms-auto">
               {loggedInUser ? (
                 <>
                   <li className="nav-item">
@@ -82,30 +83,55 @@ const NavBar = () => {
                   <li className="nav-item">
                     <button className='btn btn-outline-warning mx-2 my-1' onClick={handleLogout}>
                       Sign Out&nbsp;
-                      <FontAwesomeIcon icon={faArrowRightFromBracket} style={{ color: "#FFD43B", }} />
+                      <FontAwesomeIcon icon={faArrowRightFromBracket} style={{ color: "#FFD43B" }} />
                     </button>
                   </li>
                 </>
               ) : loggedInAdmin ? (
-                <li>
+                <li className="nav-item">
                   <div align='right'>
-                    <Link to='/adminDashboard'>{Email}</Link>
-                    <button className='btn btn-outline-light mx-2' onClick={adminHandleLogout}>
+                    <Link className="btn btn-outline-primary mx-2 my-1" to='/adminDashboard'>{Email}</Link>
+                    <button className='btn btn-outline-light mx-2 my-1' onClick={adminHandleLogout}>
                       logout
                     </button>
                   </div>
                 </li>
               ) : (
-                <>
-                  <li className="nav-item">
-                    <ButtonModel />
-                  </li>
-
-                </>
+                <li className="nav-item">
+                  <div>
+                    <div className="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                      <ul className="navbar-nav">
+                        <li className="nav-item dropdown">
+                          <button className="btn btn-dark dropdown-toggle mx-2 my-1" data-bs-toggle="dropdown" aria-expanded="false">
+                            Property Holder Section
+                          </button>
+                          <ul className="dropdown-menu dropdown-menu-dark">
+                            <li>
+                              <div className='row m-2'>
+                                <button className="btn btn-dark" disabled>Sign in to your Property Holder account</button>
+                                <Link className='btn btn-outline-light' to='/userLogin'>
+                                  Sign In&nbsp;
+                                  <FontAwesomeIcon icon={faArrowRightToBracket} style={{ color: "#FFD43B", }} />
+                                </Link>
+                              </div>
+                            </li>
+                            <li>
+                              <div className='row m-2'>
+                                <button className="btn btn-dark" disabled> Sign up as a Property Holder</button>
+                                <Link className='btn btn-outline-light' to='/userSignup'>
+                                  Sign Up&nbsp;
+                                  <FontAwesomeIcon icon={faUserPlus} style={{ color: "#FFD43B", }} />
+                                </Link>
+                              </div>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
               )}
-
             </ul>
-
           </div>
         </div>
       </nav >

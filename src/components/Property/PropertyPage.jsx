@@ -149,40 +149,41 @@ const PropertyPage = () => {
                   />
                 </div>
 
-                <div className="col-6">
-                  <div className='col-4'>
-                    <Select
-                      value={stateOptions.find(option => option.value === stateFilter)}
-                      onChange={handleStateChange}
-                      options={stateOptions}
-                      placeholder="Select or search"
-                      className="my-1 "
-                    />
-                  </div>
+                <div className='col-md-2'>
+                  <Select
+                    value={stateOptions.find(option => option.value === stateFilter)}
+                    onChange={handleStateChange}
+                    options={stateOptions}
+                    placeholder="Select or search"
+                    className="my-1 "
+                  />
+                </div>
 
-                  <div className="dropdown col-8">
-                    <button className="btn btn-outline-dark dropdown-toggle my-1 mx-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {pgTypeFilter ? pgTypeFilter : 'Select PG Type'}
-                    </button>
-                    <ul className="dropdown-menu dropdown-menu-dark">
-                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male')} >Male</button></li>
-                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Female')} >Female</button></li>
-                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male & Female')}>Male & Female</button></li>
-                    </ul>
 
-                    <button className="btn btn-outline-dark dropdown-toggle my-1 mx-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {priceFilter ? priceFilter : 'Select a Price Range'}
-                    </button>
-                    <ul className="dropdown-menu dropdown-menu-dark">
-                      <li><button className="dropdown-item" onClick={() => handlePriceChange('5000 - 7000')} >Rs. 5000 - 7000 </button></li>
-                      <li><button className="dropdown-item" onClick={() => handlePriceChange('6000 - 8000')}>Rs. 6000 - 8000</button></li>
-                      <li><button className="dropdown-item" onClick={() => handlePriceChange('7000 - 10000')}>Rs. 7000 - 10,000</button></li>
-                    </ul>
-                  </div>
+                <div className="dropdown col-md-4">
+                  <button className="btn btn-outline-dark dropdown-toggle my-1 mx-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {pgTypeFilter ? pgTypeFilter : 'Select PG Type'}
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-dark">
+                    <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male')} >Male</button></li>
+                    <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Female')} >Female</button></li>
+                    <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male & Female')}>Male & Female</button></li>
+                  </ul>
+
+                  <button className="btn btn-outline-dark dropdown-toggle my-1 mx-1" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {priceFilter ? priceFilter : 'Select a Price Range'}
+                  </button>
+                  <ul className="dropdown-menu dropdown-menu-dark">
+                    <li><button className="dropdown-item" onClick={() => handlePriceChange('5000 - 7000')} >Rs. 5000 - 7000 </button></li>
+                    <li><button className="dropdown-item" onClick={() => handlePriceChange('6000 - 8000')}>Rs. 6000 - 8000</button></li>
+                    <li><button className="dropdown-item" onClick={() => handlePriceChange('7000 - 10000')}>Rs. 7000 - 10,000</button></li>
+                  </ul>
                 </div>
                 <div className='col-md-2'>
                   <button className="btn btn-outline-primary my-1 mx-1" onClick={clearFilters}>Clear Filters</button>
                 </div>
+
+
               </div>
             </div>
           </div>
