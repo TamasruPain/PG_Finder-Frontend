@@ -149,7 +149,7 @@ const PropertyPage = () => {
                   />
                 </div>
 
-                <div className="col-6 row">
+                <div className="col-6">
                   <div className='col-4'>
                     <Select
                       value={stateOptions.find(option => option.value === stateFilter)}
@@ -165,8 +165,8 @@ const PropertyPage = () => {
                       {pgTypeFilter ? pgTypeFilter : 'Select PG Type'}
                     </button>
                     <ul className="dropdown-menu dropdown-menu-dark">
-                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male')} >Boys </button></li>
-                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Female')} >Girls </button></li>
+                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male')} >Male</button></li>
+                      <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Female')} >Female</button></li>
                       <li><button className="dropdown-item" onClick={() => handlePgTypeChange('Male & Female')}>Male & Female</button></li>
                     </ul>
 
